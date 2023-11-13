@@ -1,7 +1,8 @@
 #pragma once
-
+#include <SDL2/SDL.h>
+#include <iostream>
+#include <cstdlib>
 #include <string>
-#include <SDL.h>
 
 class Application
 {
@@ -9,16 +10,16 @@ class Application
 		Application(const std::string &title, int width, int height);
 		~Application();
 
-		inline bool is_closed() const {
+		inline bool is_closed() {
 			return closed;
 		}
 
 		void poll_events(SDL_Event &event);
-		void render();
+		void render(SDL_Renderer *renderer);
 
 		SDL_Renderer* get_renderer();
 
-	private:
+	// private:
 		bool init();
 
 		SDL_Window *window = nullptr;
@@ -27,5 +28,5 @@ class Application
 		std::string title;
 		int width = 640;
 		int height = 480;
-		bool closed = false;
+		static bool closed;
 };

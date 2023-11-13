@@ -1,8 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-#include <string>
-#include <SDL.h>
-
 #include "application.h"
 
 Application::Application(const std::string &title, int width, int height)
@@ -21,9 +16,11 @@ Application::~Application()
 	SDL_Quit();
 }
 
+bool Application::closed = false;
+
 bool Application::init()
 {
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
 		std::cerr << SDL_GetError() << std::endl;
 		return false;
@@ -48,15 +45,7 @@ bool Application::init()
 	return true;
 }
 
-void Application::poll_events(SDL_Event &event)
-{
-	if (event.type == SDL_QUIT)
-	{
-		closed = true;
-	}
-}
-
-void Application::render()
+void Application::render(SDL_Renderer *renderer)
 {
 	SDL_RenderPresent(renderer);
 	SDL_SetRenderDrawColor(renderer, 50, 50, 150, 255);
