@@ -44,6 +44,8 @@ void Ball::update()
 	x += x_speed;
 	y += y_speed;
 	
+	int BrickWidth = WIDTH/ROW;
+	int BrickHeight = HEIGHT/COL;
 
 	if (x <= RADIUS || x >= WIDTH - RADIUS)
 	{
@@ -60,5 +62,28 @@ void Ball::update()
 			}
 		}
 		y_speed *= -1;
+	}
+
+	if(x%BrickWidth <= RADIUS){
+		if((x_speed < 0) && (ARRAY[y/BrickHeight][(x/BrickWidth)-1] == 1)){
+			x_speed *= -1;
+			ARRAY[y/BrickHeight][(x/BrickWidth)-1] = 0;
+		}
+		else if((x_speed > 0) && (ARRAY[y/BrickHeight][x/BrickWidth] == 1)){
+			x_speed *= -1;
+			ARRAY[y/BrickHeight][x/BrickWidth] = 0;
+		}
+	}
+	
+
+	if((y%BrickHeight <= RADIUS)){
+		if((y_speed < 0) && (ARRAY[(y/BrickHeight)-1][(x/BrickWidth)] == 1)){
+			y_speed *= -1;
+			ARRAY[(y/BrickHeight)-1][(x/BrickWidth)] = 0;
+		}
+		else if((y_speed > 0) && (ARRAY[y/BrickHeight][(x/BrickWidth)] == 1)){
+			y_speed *= -1;
+			ARRAY[y/BrickHeight][(x/BrickWidth)] = 0;
+		}
 	}
 }
