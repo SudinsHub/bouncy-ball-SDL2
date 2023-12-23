@@ -12,8 +12,8 @@ using namespace std;
 
 class Brick{
 public:
-	void update();
+
 	void loadBrick();
-	void render(SDL_Renderer *renderer);
+	void render(SDL_Renderer *renderer, int flag);
 
 };

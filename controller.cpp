@@ -3,6 +3,7 @@
 #include"controller.h"
 #include "application.h"
 #include"main.h"
+#include"ball.h"
   
 
 Controller::Controller() : x(WIDTH/2), y(HEIGHT-20), w(CONTROLLER_WIDTH), h(CONTROLLER_HEIGHT), r{x, y, w, h} {
@@ -15,9 +16,11 @@ void Controller :: poll_events(SDL_Event &e){
 
     if (e.type == SDL_QUIT)
     {
+        Application::gameOn = false;
         Application::closed = true;
     }
     else if(e.type == SDL_KEYDOWN){
+
         switch (e.key.keysym.sym)
         {
         case SDLK_RIGHT:
@@ -32,8 +35,11 @@ void Controller :: poll_events(SDL_Event &e){
             if(r.x <= 0) break;
             r.x -= 20;
             CONTROLLER_LEFT = r.x;
-            // std::cout <<  CONTROLLER_LEFT << std::endl;
             break;
+        case SDLK_SPACE:
+            SPACE_FLAG = 1;
+            break;
+
         }
     }    
 
@@ -44,7 +50,7 @@ void Controller :: poll_events(SDL_Event &e){
    
 void Controller :: render(SDL_Renderer *renderer){
         // setting a rect in it
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_SetRenderDrawColor(renderer, 179, 170, 170, 255);
         SDL_RenderFillRect(renderer, &r);
 }       
 

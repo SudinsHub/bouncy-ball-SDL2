@@ -14,7 +14,7 @@ class Ball
 		inline int get_x() const { return x; }
 		inline int get_y() const { return y; }
 
-		void update();
+		void update(int flag);
 
 	private:
 		int x;
