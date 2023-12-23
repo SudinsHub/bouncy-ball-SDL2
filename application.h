@@ -40,6 +40,7 @@ class Application
 		SDL_Texture* bg;
 		SDL_Texture* over;
 		SDL_Texture* stage;
+		SDL_Texture* high;
 
 		std::string title;
 		int width = 640;

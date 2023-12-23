@@ -35,22 +35,6 @@ void Brick::loadBrick(){
 
     ifstream fIle("resources/stages/level3.csv");
 
-    // int i = 0;
-    // string line;
-
-    // while (getline(fIle, line) && i < COL) {
-    //     istringstream iss(line);
-    //     string brickInd;
-
-    //     int j = 0;
-    //     while (getline(iss, brickInd, ',') && j < ROW) {
-    //         ARRAY[2][i][j] = stoi(brickInd);
-    //         j++;
-    //     }
-
-    //     // Move to the next row
-    //     i++;
-    // }
 }
 
 void Brick::render(SDL_Renderer *renderer, int flag){

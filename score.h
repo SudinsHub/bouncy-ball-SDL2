@@ -9,12 +9,14 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include<fstream>
 #include <SDL2/SDL_ttf.h>
 
 class Score
 {
 public:
-
+    std::string hiScore;
     void renderScore(SDL_Renderer *renderer);
-    void hiScore();
+    void loadHiScore();
+    void renderHiScore(SDL_Renderer *renderer);
 };

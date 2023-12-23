@@ -20,6 +20,27 @@ int startTime = SDL_GetTicks();
 int brickDelay = 4000; //ms 
 int currentTextureIndex = 0;
 
+void hiScore(Application& application, Score& score){
+	int scoreFlag = 1;
+	score.loadHiScore();
+	while (scoreFlag){
+		while (SDL_PollEvent(&event) != 0) {
+			if (event.type == SDL_QUIT) {
+				Application::closed = true;
+			} else if (event.type == SDL_KEYDOWN) {
+				switch (event.key.keysym.sym) {
+					case SDLK_ESCAPE:
+						scoreFlag = 0;
+						break;
+				}
+			}
+		}
+	SDL_RenderClear(application.get_renderer());					
+	SDL_RenderCopy(application.get_renderer(), application.high, nullptr, nullptr);
+	score.renderHiScore(application.get_renderer());
+	SDL_RenderPresent(application.get_renderer());
+	}
+}
 
 void over(Application& application, Score& score){
 	int overFlag = 1;
@@ -69,7 +90,9 @@ void stageSelect(Application& application, Ball& ball, Controller& controller, B
 	int stageFlag = 1;
 	while (stageFlag){
 		while (SDL_PollEvent(&event) != 0) {
-			if (event.type == SDL_KEYDOWN) {
+			if (event.type == SDL_QUIT) {
+				Application::closed = true;
+			} else if (event.type == SDL_KEYDOWN) {
 				switch (event.key.keysym.sym) {
 					case SDLK_1:
 					case SDLK_KP_1:
@@ -147,6 +170,9 @@ void menu(Application& application, Ball& ball, Controller& controller, Brick& b
 					}
 					else if(currentTextureIndex == 2){
 						inst(application);
+					}
+					else if(currentTextureIndex == 1){
+						hiScore(application, score);
 					}
 			}
 			// handle general enter

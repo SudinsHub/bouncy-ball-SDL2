@@ -50,8 +50,9 @@ bool Application::init()
     gTextures[3] = IMG_LoadTexture(renderer, "resources/exit.png");
 	inst = IMG_LoadTexture(renderer, "resources/instDtls.png");
 	bg = IMG_LoadTexture(renderer, "resources/bg.png");
-	over = IMG_LoadTexture(renderer, "resources/gameOver.png");
+	over = IMG_LoadTexture(renderer, "resources/gameOverScore.png");
 	stage = IMG_LoadTexture(renderer, "resources/stages.png");
+	high = IMG_LoadTexture(renderer, "resources/bgBrick.png");
 	return true;
 
 }
