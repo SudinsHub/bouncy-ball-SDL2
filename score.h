@@ -17,6 +17,7 @@ class Score
 public:
     std::string hiScore;
     void renderScore(SDL_Renderer *renderer);
-    void loadHiScore();
+    int loadHiScore();
     void renderHiScore(SDL_Renderer *renderer);
+    void updateHiScore();
 };

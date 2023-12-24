@@ -52,14 +52,14 @@ void Score::renderHiScore(SDL_Renderer *renderer){
     SDL_FreeSurface(surfaceText); 
 
     SDL_Rect rectangle;
-    rectangle.x = 450;
+    rectangle.x = 245;
     rectangle.y = 150;
-    rectangle.w = 100;
-    rectangle.h = 80;
+    rectangle.w = 150;
+    rectangle.h = 100;
     SDL_RenderCopy(renderer,textureText,NULL,&rectangle);
 
 }
-void Score::loadHiScore(){
+int Score::loadHiScore(){
  // Open
     ifstream inputFile("resources/score.txt");
 
@@ -72,4 +72,15 @@ void Score::loadHiScore(){
 
     // Close
     inputFile.close();
+
+    return stoi(hiScore);
+}
+
+void Score::updateHiScore(){
+    if(SCORE > MAX_SCORE){
+        ofstream myfile;
+        myfile.open ("resources/score.txt");
+        myfile << SCORE;
+        myfile.close();
+    }
 }

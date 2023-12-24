@@ -44,15 +44,15 @@ bool Application::init()
 		return false;
 	}
 
-	gTextures[0] = IMG_LoadTexture(renderer, "resources/start.png");
-    gTextures[1] = IMG_LoadTexture(renderer, "resources/score.png");
-    gTextures[2] = IMG_LoadTexture(renderer, "resources/inst.png");
-    gTextures[3] = IMG_LoadTexture(renderer, "resources/exit.png");
-	inst = IMG_LoadTexture(renderer, "resources/instDtls.png");
-	bg = IMG_LoadTexture(renderer, "resources/bg.png");
-	over = IMG_LoadTexture(renderer, "resources/gameOverScore.png");
-	stage = IMG_LoadTexture(renderer, "resources/stages.png");
-	high = IMG_LoadTexture(renderer, "resources/bgBrick.png");
+	gTextures[0] = IMG_LoadTexture(renderer, "resources/img/start.png");
+    gTextures[1] = IMG_LoadTexture(renderer, "resources/img/score.png");
+    gTextures[2] = IMG_LoadTexture(renderer, "resources/img/inst.png");
+    gTextures[3] = IMG_LoadTexture(renderer, "resources/img/exit.png");
+	inst = IMG_LoadTexture(renderer, "resources/img/instDtls.png");
+	bg = IMG_LoadTexture(renderer, "resources/img/bg.png");
+	over = IMG_LoadTexture(renderer, "resources/img/gameOverScore.png");
+	stage = IMG_LoadTexture(renderer, "resources/img/stages.png");
+	high = IMG_LoadTexture(renderer, "resources/img/bgBrick.png");
 	return true;
 
 }

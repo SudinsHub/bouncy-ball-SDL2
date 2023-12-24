@@ -15,6 +15,7 @@ const int CONTROLLER_HEIGHT = 20;
 const int RADIUS = 10;
 int SCORE = 0;
 int SPACE_FLAG = 0;
+int MAX_SCORE = 0;
 SDL_Event event;
 int startTime = SDL_GetTicks(); 
 int brickDelay = 4000; //ms 
@@ -22,7 +23,7 @@ int currentTextureIndex = 0;
 
 void hiScore(Application& application, Score& score){
 	int scoreFlag = 1;
-	score.loadHiScore();
+	MAX_SCORE = score.loadHiScore();
 	while (scoreFlag){
 		while (SDL_PollEvent(&event) != 0) {
 			if (event.type == SDL_QUIT) {
@@ -45,6 +46,7 @@ void hiScore(Application& application, Score& score){
 
 void over(Application& application, Score& score){
 	int overFlag = 1;
+
 	while (overFlag){
 		while (SDL_PollEvent(&event) != 0) {
 			if (event.type == SDL_QUIT) {
@@ -69,7 +71,7 @@ void over(Application& application, Score& score){
 		score.renderScore(application.get_renderer());
 		SDL_RenderPresent(application.get_renderer());
 	}
-	
+	score.updateHiScore();
 	SPACE_FLAG = 0;
 	SCORE = 0;
 }
@@ -208,12 +210,7 @@ int main(int argc, char *argv[])
 	Controller controller;
 	Brick brick;
 	Score score;
-	// for(int i=0; i<COL; i++){
-	// 	for(int j=0; j<ROW; j++){
-	// 		cout << ARRAY[2][i][j] << " ";
-	// 	}
-	// 	cout << endl;
-	// }
+	MAX_SCORE = score.loadHiScore();
 	if (SDL_PollEvent(&event)) {
 		cout << "Buffer Cleared" << endl;
     }
