@@ -27,6 +27,7 @@ void hiScore(Application& application, Score& score){
 		while (SDL_PollEvent(&event) != 0) {
 			if (event.type == SDL_QUIT) {
 				Application::closed = true;
+				break;
 			} else if (event.type == SDL_KEYDOWN) {
 				switch (event.key.keysym.sym) {
 					case SDLK_ESCAPE:
@@ -68,6 +69,7 @@ void over(Application& application, Score& score){
 		score.renderScore(application.get_renderer());
 		SDL_RenderPresent(application.get_renderer());
 	}
+	
 	SPACE_FLAG = 0;
 	SCORE = 0;
 }
